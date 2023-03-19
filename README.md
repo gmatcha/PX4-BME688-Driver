@@ -2,7 +2,7 @@
 
 ## Modular Driver integrating Bosch bme68x-sensor-api
 
-### PX4 Autopilot Setup
+### Build sensor driver on PX4 Autopilot
   1. Declare unique sensor/driver ID under `drv_sensor.h` - `#define DRV_GAS_DEVTYPE_BME688 0xC2`
   2. Add submodule under PX4 directory `src/drivers/gas`
       * `git submodule add <URL> src/drivers/gas`
@@ -17,6 +17,25 @@
   ```
 
 ### Publish uORB sensor data on topic
+  
+  1. Define uORB sensor topic by creating a msg file under `msg/sensor_gas.msg`
+  ```
+  uint64 timestamp          # time since system start (microseconds)
+  uint64 timestamp_sample
+
+  uint32 device_id          # unique device ID for the sensor that does not change between power cycles
+
+  uint32 sample_count       # bme688 sample counts
+  float32 temperature       # temperature in degrees Celsius
+  float32 pressure          # static pressure measurement in Pascals
+  float32 humidity          # Humidity in percentage (%)
+  float32 gas_resistance    # gas resistance (ohm)
+  uint8 device_status       # byte hex 0xB0
+
+  uint32 error_count
+
+  uint8 ORB_QUEUE_LENGTH = 4
+  ```
 
 #### SPI interface (qGroundControl MavLink Console)
 ```
