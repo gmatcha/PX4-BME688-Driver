@@ -4,14 +4,16 @@
 
 ### PX4 Autopilot Setup
   1. Declare unique sensor/driver ID under `drv_sensor.h` - `#define DRV_GAS_DEVTYPE_BME688 0xC2`
-  2. Create directory `src/drivers/gas/bme688` under PX4-Autopilot by cloning code as submodule
+  2. Add submodule under PX4 directory `src/drivers/gas`
+      * `git submodule add <URL> src/drivers/gas`
   3. Enable BME688 driver: `make <board_type> boardconfig` 
       * Example: make nxp_fmuk66-v3_default boardconfig
-  4. Sync submodule and build PX4
+  4. Sync, compile, and build PX4 for flashing
   ```
   cd build && cmake ..
   cd ..
   make -j4 <board_type>
+  make <board_type> upload
   ```
 
 ### Publish uORB sensor data on topic
