@@ -1,4 +1,7 @@
-# PX4 BME688 Gas Sensor Interface
+## PX4 BME688 Gas Sensor Interface (NXP RDDRONE-FMUK66 Flight Controller)
+
+## NXP HoverGames #3 [Details](https://www.hovergames.com)
+![alt text](photo/fmuk66-bme688.png)
 
 ## Modular Driver integrating Bosch bme68x-sensor-api
 
@@ -6,7 +9,7 @@
   1. Declare unique sensor/driver ID under `drv_sensor.h` - `#define DRV_GAS_DEVTYPE_BME688 0xC2`
   2. Add submodule under PX4 directory `src/drivers/gas`
       * `git submodule add <URL> src/drivers/gas`
-  3. Enable BME688 driver: `make <board_type> boardconfig` 
+  3. Enable BME688 driver: `make <board_type> boardconfig`
       * Example: make nxp_fmuk66-v3_default boardconfig
   4. Sync, compile, and build PX4 for flashing
   ```
@@ -17,7 +20,7 @@
   ```
 
 ### Publish uORB sensor data on topic
-  
+
   1. Define uORB sensor topic by creating a msg file under `msg/sensor_gas.msg`
   ```
   uint64 timestamp          # time since system start (microseconds)
@@ -119,5 +122,3 @@ TOPIC: sensor_gas
     error_count: 0
     device_status: 176
 ```
-
-
