@@ -1,0 +1,10 @@
+menu "gas"
+    menuconfig COMMON_GAS
+        bool "Common gas"
+        default n
+        select DRIVERS_GAS_BOSCH_BME688
+	select DRIVERS_GAS_BOSCH_BME688
+        ---help---
+            Enable default set of gas drivers
+    rsource "*/Kconfig"
+endmenu #gas

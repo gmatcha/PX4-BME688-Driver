@@ -1,0 +1,5 @@
+menuconfig DRIVERS_GAS_BME688
+	bool "bme688"
+	default n
+	---help---
+		Enable support for bme688
